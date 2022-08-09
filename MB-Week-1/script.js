@@ -50,9 +50,8 @@ const nav = document.querySelectorAll('a[data-target]');
 nav.forEach(a=>{
     a.addEventListener('click', (e)=>{
         e.preventDefault();
-        const target = e.target.dataset.target;
-        if (loadPage(target)){
-            history.pushState(null, null, '#' + target);
+        const page = e.target.dataset.target;
+        if (loadPage(page)){
             clearActiveState();
             a.classList.add('active')
         }

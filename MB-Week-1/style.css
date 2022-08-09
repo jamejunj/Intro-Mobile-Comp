@@ -27,12 +27,6 @@ time, mark, audio, video {
   box-sizing: border-box;
 }
 
-
-
-html, body {
-  height: 100%;
-}
-
 body {
   margin: 0;
   font-family: 'Prompt', sans-serif;
@@ -63,10 +57,13 @@ main aside {
   width: 100%;
   background-color: rgb(63,52,57);
   padding: 1rem;
+  min-height: calc(100vh - 4rem);
 }
 
 main aside ul{
   list-style-type: none;
+  position: sticky;
+  top: 15px;
 }
 
 main aside ul>li>a{
@@ -108,4 +105,7 @@ footer {
   padding: 1rem;
   color: white;
   background-color: #bab2ae;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
