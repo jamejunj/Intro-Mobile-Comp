@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+
+
+/* css reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Prompt', sans-serif;
+}
+
+header {
+  width: 100%;
+  background-color: rgb(239 235 226)  ;
+  color: rgb(128 83 64);
+  padding: 1.7rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  color: rgb(63,52,57);
+}
+
+main aside {
+  max-width: 200px;
+  width: 100%;
+  background-color: rgb(63,52,57);
+  padding: 1rem;
+}
+
+main aside ul{
+  list-style-type: none;
+}
+
+main aside ul>li>a{
+  padding: 0.375rem;
+  display: block;
+  border-radius: 1rem;
+  padding-inline-start: 0.5rem;
+}
+
+main aside ul>li:hover>a{
+  background-color: rgb(0 0 0 / 0.5);
+}
+
+main aside ul>li>a{
+  color: rgb(236,232,225);
+  text-decoration: none;
+}
+
+main aside ul>li>a.active{
+  color: rgb(255, 238, 0);
+}
+
+main aside ul>li:hover>a{
+  color: rgb(255, 238, 0);
+}
+
+main article {
+  width: 100%;
+  padding: 1rem;
+}
+
+main article h1{
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  background-color: #bab2ae;
+}
