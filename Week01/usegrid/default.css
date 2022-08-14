@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Prompt');
+@import url('./reset.css');
+
+:root {
+    --color-primary: rgb(197, 128, 0);
+    --color-secondary:  rgb(63,52,57);
+    --color-tertiary: #ffb048;
+    --font-dark:  rgb(63,52,57);
+    --font-light: #fefefe;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Prompt', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--font-dark);
+    height: 100vh;
+    display: grid;
+    grid-template-areas: 'header header'
+    'nav main' 
+    'footer footer';
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: minmax(120px, 20%) 1fr;
+}
+
+body>header{
+    grid-area: header;
+    background-color: var(--color-primary);
+    color: var(--font-light);
+    padding: 1rem;
+}
+
+body>nav{
+    grid-area: nav;
+    background-color: var(--color-secondary);
+    color: var(--font-light);
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+/* navigation */
+body>nav>ul{
+    list-style-type: none;
+}
+
+body>nav>ul>li>a{
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem;
+    display: block;
+    border-radius: 1rem;
+}
+
+body>nav>ul>li>a:hover{
+    color: rgb(255, 230, 4);
+    background-color: rgba(0,0,0,0.5);
+}
+
+body>main{
+    grid-area: main;
+    background-color: #fff;
+    color: var(--font-dark);
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+body>footer{
+    grid-area: footer;
+    background-color: var(--color-tertiary);
+    color: var(--font-light);
+    padding: 1rem;
+}
+
+article[role="tab-content"]{
+    display:none;
+}
+
+@media screen and (max-width: 720px) {
+    body {
+        grid-template-areas: 'header header'
+        'nav nav'
+        'main main' 
+        'footer footer';
+        grid-template-rows: min-content min-content 1fr min-content;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* navigation */
+    body>nav>ul{
+        list-style-type: none;
+    }
+
+    body>nav>ul{
+        display: flex;
+    }
+
+    body>nav>ul>li>a{
+        text-decoration: none;
+        color: white;
+        padding: 0.5rem;
+        display: block;
+        border-radius: 1rem;
+    }
+}

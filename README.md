@@ -3,4 +3,7 @@
 (ไม่ได้ลง ทำแต่ assignment)
 
 ## Week 1
-https://jamejunj.github.io/Intro-Mobile-Comp/Week-1
+https://jamejunj.github.io/Intro-Mobile-Comp/Week01
+
+## Week 2
+https://jamejunj.github.io/Intro-Mobile-Comp/Week01
