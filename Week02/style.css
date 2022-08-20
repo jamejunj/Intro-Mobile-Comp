@@ -37,7 +37,7 @@ input, select, textarea, button {
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .form-control {
@@ -51,6 +51,11 @@ input, select, textarea, button {
 .form-control:focus {
     border: 1px solid rgb(53, 134, 255);
     box-shadow: 0 0 0.1rem 0.1rem rgba(53, 134, 255, 0.25);
+}
+
+.form-control.error {
+    border: 1px solid rgb(255, 53, 53);
+    box-shadow: 0 0 0.1rem 0.1rem rgba(255, 53, 53, 0.25);
 }
 
 .form-control:read-only {
@@ -120,4 +125,43 @@ button.close {
     background-color: transparent;
     border: 0;
     -webkit-appearance: none;
+}
+
+a {
+    color:rgb(53, 134, 255);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.input-group {
+    display: flex;
+}
+
+.remove-button {
+    border: none;
+    background-color: rgb(239,68,68);
+    color: white;
+    border-radius: 50%;
+    margin-left: 1rem;
+    font-weight: 700;
+}
+
+.remove-button:hover {
+    background-color: #b91c1c;
+}
+
+.add-button {
+    border: none;
+    background-color: rgb(68, 239, 68);
+    color: white;
+    border-radius: 50%;
+    margin-left: 1rem;
+    font-weight: 700;
+}
+
+.add-button:hover {
+    background-color: #1cb93e;
 }
