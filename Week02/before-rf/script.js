@@ -1,4 +1,4 @@
-const form = document.forms[0];
+const form = document.querySelector('form');
 const total_income = document.querySelector('input[name=total-income]');
 const rate = document.querySelector('input[name=tax]');
 const output = document.querySelector('input[name=output]');
@@ -35,13 +35,12 @@ function addIncome(){
 function removeIncome(index){
     if (index){
         let income = container.querySelector(`div.income[data-index="${index}"]`);
-        let recalculate = income.querySelector('input[name=income]').value;
         income.remove();
-        if (recalculate) calculateTotalIncome();
     }
 }
 
-function checkInputValid(){
+function calculateTotalIncome(){
+    let total = 0;
     let error = false;
     [...container.querySelectorAll('input[name=income]')].forEach(ic=>{
         let incomeValue = Number(ic.value);
@@ -49,22 +48,14 @@ function checkInputValid(){
             alert_msg.parentElement.className = 'alert alert-danger';
             alert_msg.innerText = 'กรุณากรอกข้อมูลให้ถูกต้อง';
             alert_msg.parentElement.removeAttribute('hidden')
-            ic.classList.add('error')
+            ic.classList.add('error');
             error = true;
             return;
         }
         ic.classList.remove('error');
-    })
-    return error;
-}
-
-function calculateTotalIncome(){
-    let total = 0;
-    if (checkInputValid()) return;
-    [...container.querySelectorAll('input[name=income]')].forEach(ic=>{
-        let incomeValue = Number(ic.value);
         total += incomeValue;
     })
+    if (error) return;
     total_income.value = total;
     form.dispatchEvent(new Event('submit'));
 }
@@ -98,8 +89,20 @@ function getTexesRate(income){
 
 function calculateTax(e){
     e.preventDefault();
-    if (checkInputValid()) return;
-    let incomeValue = Number(total_income.value);
+    let error = false;
+    [...container.querySelectorAll('input[name=income]')].forEach(ic=>{
+        let incomeValue = Number(ic.value);
+        if (incomeValue < 0){
+            alert_msg.parentElement.className = 'alert alert-danger';
+            alert_msg.innerText = 'กรุณากรอกข้อมูลให้ถูกต้อง';
+            alert_msg.parentElement.removeAttribute('hidden')
+            ic.classList.add('error');
+            error = true;
+            return;
+        }
+        ic.classList.remove('error');
+    })
+    if (error) return;
     let taxesRate = getTexesRate(incomeValue)
     let texes = incomeValue * taxesRate;
     rate.value = taxesRate;
