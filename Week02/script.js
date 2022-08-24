@@ -15,7 +15,7 @@ income.forEach(ic=>{
 function template(i){
     return `<label contenteditable>รายได้ (บาท)</label>
         <div class="input-group">
-            <input class="form-control" type="number" name="income" id="income">
+            <input class="form-control" type="text" name="income" id="income">
             <button type="button" class="btn add-button" onclick="addIncome();">+</button>
             <button type="button" class="btn remove-button" onclick="removeIncome(${i});">-</button>
         </div>`
@@ -62,10 +62,12 @@ function calculateTotalIncome(){
     let total = 0;
     if (checkInputValid()) return;
     [...container.querySelectorAll('input[name=income]')].forEach(ic=>{
-        let incomeValue = Number(ic.value);
+        ic.value = toggleComma(ic.value, 'remove');
+        ic.value = toggleComma(ic.value, 'add');
+        let incomeValue = Number(ic.value.replace(/,/g, ''));
         total += incomeValue;
     })
-    total_income.value = total;
+    total_income.value = toggleComma('' + Number(total.toFixed(2)));
     form.dispatchEvent(new Event('submit'));
 }
 
@@ -96,14 +98,34 @@ function getTexesRate(income){
     }
 }
 
+function toggleComma(input, action='auto'){
+    switch (action){
+        case 'remove':
+            input = input.replace(/,/g, '');
+            break;
+        case 'add':
+            const parts = input.split('.');
+            input = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',') + (parts[1] ? '.' + parts[1] : '');
+            break;
+        default:
+            if (input.includes(',')){
+                input = input.replace(/,/g, '');
+            }else{
+                const parts = input.split('.');
+                input = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',') + (parts[1] ? '.' + parts[1] : '');
+            }
+    }
+    return input;
+}
+
 function calculateTax(e){
     e.preventDefault();
     if (checkInputValid()) return;
-    let incomeValue = Number(total_income.value);
+    let incomeValue = Number(toggleComma(total_income.value, 'remove'));
     let taxesRate = getTexesRate(incomeValue)
-    let texes = incomeValue * taxesRate;
-    rate.value = taxesRate;
-    output.value = texes;
+    let taxes = incomeValue * taxesRate;
+    rate.value = taxesRate * 100;
+    output.value = toggleComma('' + Number(taxes.toFixed(2)));
     alert_msg.parentElement.className = 'alert alert-success';
     alert_msg.innerText = 'คำนวณค่าสำเร็จ';
     alert_msg.parentElement.removeAttribute('hidden')
